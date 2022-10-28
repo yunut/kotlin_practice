@@ -6,7 +6,7 @@
 기술 스택
 
 
-backend: kotlin, spring webflux, mongobd
+backend: kotlin, spring webflux, mongodb
 
 
 frontend: thymeleaf
