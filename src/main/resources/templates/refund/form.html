@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/header :: header">
+    <title>Refund</title>
+
+  </head>
+
+  <body>
+  <nav th:replace="fragments/navbar :: navigation"></nav>
+
+
+  <div>
+		REFUND ORDER
+    <form class="form-horizontal" action="#" th:action="@{/refund}" th:object="${refund}" method="POST">
+
+		<input type="text" class="form-control" th:field="*{refundid}" placeholder="id" hidden="true"/>
+        <input type="text" name="Reason" th:field="*{ordernumber}" placeholder="Order Number"  >
+        <input type="text" name="Other"th:field="*{reason}" placeholder="Reason" >
+		<input type="text" th:field="*{productname}" placeholder="product" />
+
+        <button type="submit" class="btn btn-default">Submit</button>
+
+      </form>
+	</div>
+    </body>
+</html>

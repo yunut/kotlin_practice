@@ -1,10 +1,15 @@
 server:
-    port: 8080
+    port: 80
 
 spring:
     thymeleaf:
         cache: false
+        check-template-location: true
+    devtools:
+        livereload:
+            enabled: true
 
 logging:
     level:
         root: debug
+

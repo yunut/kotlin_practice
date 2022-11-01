@@ -9,13 +9,9 @@ import org.springframework.web.reactive.function.server.router
 class MainRouter(private val handler: MainHandler) {
 
     @Bean
-    fun routerFunction() =
+    fun router() =
             router {
-                "v1".nest {
-                    listOf(
-                            GET("/main", handler::get)
-                    )
-                }
+                GET("/", handler::main)
             }
 
 }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/header :: header"></head>
+<head><title>New Product</title></head>
+
+<body>
+    <nav th:replace="fragments/adminNavbar :: admin-navigation"></nav>
+
+<div class="container">
+    <h2 th:text="${heading}"></h2>
+    <div>
+        <form class="form-horizontal" th:action="@{/product/create}" th:object="${product}" method="POST">
+
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                <p th:text="#{form.hasErrors}">Error Message</p>
+            </div>
+
+            <input type="hidden" th:field="*{Id}"/>
+
+<!-- Name START -->
+            <div class="form-group row"th:class="${#fields.hasErrors('name')} ? 'form-group has-error' : 'form-group'">
+                <label for="name" class="col-sm-2 col-form-label">Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{name}" th:errorclass="has-error"/>
+                </div>
+                <span class="help-block">
+                   <ul>
+                       <li th:each="err : ${#fields.errors('name')}" th:text="${err}" />
+                   </ul>
+                </span>
+            </div>
+<!-- Name END -->
+
+<!-- Price START -->
+            <div class="form-group" th:class="${#fields.hasErrors('price')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Price:</label>
+                <div class="col-sm-10">
+                    <input type="number" min="0" max="9999999" step="0.01" class="form-control" th:field="*{price}" th:errorclass="has-error"/>
+
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('price')}" th:text="${err}" />
+                       </ul>
+                    </span>
+                </div>
+            </div>
+<!-- Price END -->
+
+<!-- Summary START -->
+            <div class="form-group" th:class="${#fields.hasErrors('summary')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Summary:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{summary}" th:errorclass="has-error"/>
+                </div>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('summary')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+<!-- Summary END -->
+
+
+<!-- Description Start -->
+            <div class="form-group" th:class="${#fields.hasErrors('description')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Description:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{description}" th:errorclass="has-error"/>
+                </div>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('description')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+<!-- Description END -->
+
+
+<!-- image Start -->
+            <div class="form-group" th:class="${#fields.hasErrors('image')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Image:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{image}" th:errorclass="has-error"/>
+                </div>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('image')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+<!-- image END -->
+
+
+            <div class="row">
+                <button type="submit" class="btn btn-success createProduct" th:text="${button}"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

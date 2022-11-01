@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- header fragment -->
+    <head th:insert="fragments/header :: header"></head>
+    <head>
+        <title>Admin Dashboard</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="admin-navigation">
+            <a class="navbar-brand" href="/admin">Admin Dashboard</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Storefront</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/product/">Product</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/category/">Category</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+    </body>
+</html>

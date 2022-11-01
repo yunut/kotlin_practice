@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/header :: header">
+    <title>Review</title>
+
+  </head>
+
+  <body>
+    <nav th:replace="fragments/navbar :: navigation"></nav>
+
+    <!-- BootStrap template https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/index.html  -->
+
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">eCommerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+
+      <p>Rating:</p>
+<input type="radio" id="one" name="rating" value="1">
+	<label for="one">1 Star</label><br>
+<input type="radio" id="two" name="rating" value="2">
+	<label for="two">2 Stars</label><br>
+<input type="radio" id="three" name="rating" value="3">
+	<label for="three">3 Stars</label><br>
+<input type="radio" id="four" name="rating" value="4">
+	<label for="four">4 Stars</label><br>
+<input type="radio" id="five" name="rating" value="5">
+	<label for="five">5 Stars</label><br>
+
+<p>Review:</p>
+<textarea id="userReview" rows="15" cols="75" style="resize: none;"></textarea>
+
+
+
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <h1>Review</h1>
+    <h1>You gonna review a product</h1>
+</div>
+
+</body>
+</html>

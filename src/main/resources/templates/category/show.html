@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/header :: header"></head>
+<head><title th:text="${category.name}"></title> </head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav th:replace="fragments/adminNavbar :: admin-navigation"></nav>
+
+    <div class="container" id="content">
+
+        <div class="row">
+            <div class="spacing"></div>
+
+            <!-- Left Content Start -->
+            <div class="col-lg-4">
+                <h2>Category: <b><span th:text="${category.name}"></span></b></h2>
+                <br>
+                <h5>Parent Category:
+                    <!-- <a th:href="${'/category/' + category.parent}"> -->
+                        <span th:text="${parentCategory}"></span>
+                    <!-- </a> -->
+                </h5>
+            </div>
+
+
+
+            <!-- Right Content Start -->
+            <div class="col-lg-8">
+                <table class="table table-striped categoryTable">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>View</th>
+                        <th>Remove</th>
+                    </tr>
+
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.name}"></td>
+                        <td><a th:href="${'/product/' + product.Id}">View</a></td>
+                        <td><a th:href="${'deleteProduct/' + category.Id + '/' + product.Id}">Remove</a></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div class="spacing"></div>
+
+
+        <!-- Catalog assignments START -->
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Product Assignment</h4>
+                <form class="form-horizontal" th:action="@{/category/addProductAssignment}" th:object="${ProductHolder}" method="POST">
+                    <label for="name" class="col-sm-2 col-form-label">Product ID: </label>
+                    <input type="text" class="form-control" th:field="*{theProduct}"/>
+                    <input type="hidden" th:field="*{categoryId}"/>
+                    <div class="row">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-8">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product ID</th>
+                    </tr>
+                    <tr th:each="prod : ${allProd}">
+                        <td th:text="${prod.Id}"></td>
+                        <td th:text="${prod.Name}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Catalog assignments END -->
+    </div>
+
+</body>
+</html>

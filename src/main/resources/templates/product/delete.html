@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Refund</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+          <!-- Custom styles for this template -->
+    <!-- <link href="css/shop-homepage.css" rel="stylesheet"> -->
+
+  </head>
+
+  <body>
+
+
+      <!-- form creating -->
+        <!-- input tags -->
+        <br><br><br><br>
+        <div id="wrapper">
+          <form class="form-horizontal" action="#" th:action="@{/edit/submit}" th:object="${bool}" method="DELETE">
+
+          <h5 >Are you sure you want to delete <b th:text="${product.name}">Product</b></h5>
+            <label for="yes_no_radio">Do you agree to the terms?</label>
+            <p>
+                <input type="radio" name="yes_no" checked value="True" th:field="*{bool}">Yes</input>
+            </p>
+            <p>
+                <input type="radio" name="yes_no" value="False" th:field="*{bool}">No</input>
+            </p>
+          </form>
+
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+
+    </body>
+</html>
