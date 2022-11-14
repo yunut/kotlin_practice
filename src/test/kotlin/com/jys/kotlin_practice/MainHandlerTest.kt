@@ -1,7 +1,7 @@
-package com.jys.webflux_ecommerce
+package com.jys.kotlin_practice
 
-import com.jys.webflux_ecommerce.main.handler.MainHandler
-import com.jys.webflux_ecommerce.main.router.MainRouter
+import com.jys.kotlin_practice.main.handler.MainHandler
+import com.jys.kotlin_practice.main.router.MainRouter
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

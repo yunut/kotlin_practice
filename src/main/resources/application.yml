@@ -8,8 +8,21 @@ spring:
     devtools:
         livereload:
             enabled: true
+    data:
+        mongodb:
+            uri: mongodb://yunut:test123@3.38.73.128:27017/ecommerce?authSource=admin
+
+#    security:
+#      user:
+#          name: admin
+#          password: admin
+#          roles:
+#              - ADMIN
+#              - VIEW
 
 logging:
     level:
         root: debug
+
+
 

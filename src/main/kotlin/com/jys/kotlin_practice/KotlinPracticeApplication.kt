@@ -1,11 +1,11 @@
-package com.jys.webflux_ecommerce
+package com.jys.kotlin_practice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class WebfluxEcommerceApplication
+class KotlinPracticeApplication
 
 fun main(args: Array<String>) {
-    runApplication<WebfluxEcommerceApplication>(*args)
+    runApplication<KotlinPracticeApplication>(*args)
 }

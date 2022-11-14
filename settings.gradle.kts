@@ -1,1 +1,1 @@
-rootProject.name = "webflux_ecommerce"
+rootProject.name = "kotlin_practice"
