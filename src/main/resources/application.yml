@@ -1,25 +1,5 @@
 server:
     port: 80
 
-spring:
-    thymeleaf:
-        cache: false
-        check-template-location: true
-    devtools:
-        livereload:
-            enabled: true
-
-#    security:
-#      user:
-#          name: admin
-#          password: admin
-#          roles:
-#              - ADMIN
-#              - VIEW
-
-logging:
-    level:
-        root: debug
-
 
 
