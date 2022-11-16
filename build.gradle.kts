@@ -51,7 +51,6 @@ dependencies {
     testImplementation ("io.projectreactor:reactor-test")
     testImplementation ("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
     testImplementation ("org.testcontainers:mongodb")
-    testImplementation ("org.springframework.boot:spring-boot-starter-webflux")
 }
 
 tasks.withType<KotlinCompile> {
