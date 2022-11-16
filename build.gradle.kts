@@ -22,6 +22,11 @@ repositories {
 }
 
 dependencies {
+    // Bill of Materials (BOM)
+    implementation(platform("io.kotest:kotest-bom:5.4.2"))
+    implementation(platform("org.testcontainers:testcontainers-bom:1.17.3"))
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2021.0.4"))
+
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
@@ -30,9 +35,23 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.7.5")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-    implementation("io.netty:netty-resolver-dns-native-macos:4.1.84.Final:osx-aarch_64")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
+
+    testImplementation ("org.springframework.boot:spring-boot-starter-test")
+    testImplementation ("org.testcontainers:testcontainers:1.16.3")
+    testImplementation ("org.testcontainers:junit-jupiter:1.17.2")
+    testImplementation ("org.testcontainers:mongodb:1.17.2")
+
+    testImplementation ("com.ninja-squad:springmockk:3.1.1")
+    testImplementation ("io.kotest.extensions:kotest-extensions-spring:1.1.2")
+    testImplementation ("io.kotest.extensions:kotest-extensions-testcontainers:1.3.4")
+    testImplementation ("io.kotest:kotest-assertions-core")
+    testImplementation ("io.kotest:kotest-framework-datatest")
+    testImplementation ("io.kotest:kotest-runner-junit5")
+    testImplementation ("io.mockk:mockk:1.13.1")
+    testImplementation ("io.projectreactor:reactor-test")
+    testImplementation ("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
+    testImplementation ("org.testcontainers:mongodb")
+    testImplementation ("org.springframework.boot:spring-boot-starter-webflux")
 }
 
 tasks.withType<KotlinCompile> {
