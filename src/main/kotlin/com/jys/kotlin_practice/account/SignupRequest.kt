@@ -4,7 +4,7 @@ package com.jys.kotlin_practice.account
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 
-data class AccountRequest(
+data class SignupRequest(
 
     @field: NotBlank(message = "이름은 필수 입력 값입니다.")
     val name: String,
