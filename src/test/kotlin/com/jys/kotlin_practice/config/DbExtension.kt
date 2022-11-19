@@ -10,7 +10,7 @@ import org.testcontainers.containers.MongoDBContainer
  *
  * 참고: [Kotest > Extensions](https://kotest.io/docs/framework/extensions/extensions-introduction.html)
  */
-@AutoScan
+//@AutoScan
 object DbExtension : BeforeProjectListener, AfterProjectListener {
     private val mongo = MongoDBContainer("mongo:4.0")
 

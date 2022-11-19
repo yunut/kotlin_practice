@@ -63,8 +63,8 @@ class SignupTest(
             }
             Then("code: different_password, message: 비밀번호가 일치하지 않습니다") {
                 response.expectBody(ErrorResponse::class.java).returnResult().responseBody!!.should {
-                    it.code shouldBe AccountError.DIFFERENT_PASSWORD.code()
-                    it.message shouldBe AccountError.DIFFERENT_PASSWORD.message()
+                    it.code shouldBe AccountError.DIFFERENT_PASSWORD.code
+                    it.message shouldBe AccountError.DIFFERENT_PASSWORD.message
                 }
             }
 

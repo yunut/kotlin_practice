@@ -1,6 +1,11 @@
 package com.jys.kotlin_practice.error
 
 interface Error {
-    fun code(): String
-    fun message(): String
+
+    val name: String
+
+    val message: String
+
+    val code: String
+        get(): String = name.lowercase()
 }
