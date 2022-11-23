@@ -5,3 +5,18 @@ server:
       enabled: false
     ## 오류 응답에 stacktrace 내용을 포함할지 여부
     include-stacktrace: never
+  port: 8090
+
+keycloak:
+  enabled: true
+  realm: master
+  auth-server-url: http://localhost:8080
+  ssl-required: external
+  resource: admin-cli
+  credentials:
+    secret: D90CDLQYzWQYnKw032wfMUdfQSsaW0UP
+  use-resource-role-mappings: true
+
+logging:
+  level:
+    root: info

@@ -10,6 +10,8 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.clearAllMocks
+import org.keycloak.admin.client.Keycloak
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
@@ -18,11 +20,15 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @SpringBootTest
 @AutoConfigureWebTestClient
 class SignupTest(
-    private val webTestClient: WebTestClient
+    private val webTestClient: WebTestClient,
+    private val keycloak: Keycloak,
+    @Value("\${keycloak.realm}")
+    private val realm: String
 ) : BehaviorSpec({
 
     beforeEach {
         clearAllMocks()
+
     }
 
     fun request(request: SignupRequest) = webTestClient.post()
@@ -71,6 +77,7 @@ class SignupTest(
         }
     }
 
+    //Todo 테스트 계정 삭제 로직 추가
     Given("회원가입 API 가입 성공") {
         When("계정이 만들어졌을 경우") {
             val request = signupRequest()
