@@ -8,14 +8,11 @@ server:
   port: 8090
 
 keycloak:
-  enabled: true
-  realm: master
-  auth-server-url: http://localhost:8080
-  ssl-required: external
-  resource: admin-cli
-  credentials:
-    secret: D90CDLQYzWQYnKw032wfMUdfQSsaW0UP
-  use-resource-role-mappings: true
+  realm: development
+  grant_type: client_credentials
+  auth-server-url: http://localhost:8081
+  clientId: internal-services
+  client_secret: ASLelSDoDqTuPEODKUpantzkivy7xiRc
 
 logging:
   level:
