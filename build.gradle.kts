@@ -36,8 +36,6 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.keycloak:keycloak-spring-boot-starter:20.0.1")
-    implementation("org.keycloak.bom:keycloak-adapter-bom:20.0.1")
     implementation("org.keycloak:keycloak-admin-client:20.0.1")
 
     testImplementation ("org.springframework.boot:spring-boot-starter-test")
