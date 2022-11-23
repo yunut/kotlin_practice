@@ -27,5 +27,5 @@ class KeycloakConfiguration(
     fun keycloakClient(): RealmResource =
         KeycloakClient(
             realm, grantType, authUrl, clientId, clientSecret
-        ).build().realm(realm)
+        ).build()
 }
