@@ -1,7 +1,6 @@
 package com.jys.kotlin_practice.config
 
 import com.jys.kotlin_practice.keycloak.KeycloakClient
-import org.keycloak.admin.client.resource.RealmResource
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -24,8 +23,6 @@ class KeycloakConfiguration(
      * keycloak client
      */
     @Bean
-    fun keycloakClient(): RealmResource =
-        KeycloakClient(
-            realm, grantType, authUrl, clientId, clientSecret
-        ).build()
+    fun keycloakClient(): KeycloakClient =
+        KeycloakClient(realm, grantType, authUrl, clientId, clientSecret)
 }

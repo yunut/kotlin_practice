@@ -2,12 +2,12 @@ package com.jys.kotlin_practice.account
 
 import com.jys.kotlin_practice.account.error.AccountError
 import com.jys.kotlin_practice.error.BadRequestErrorCodeException
-import com.jys.kotlin_practice.keycloak.KeycloakService
+import com.jys.kotlin_practice.keycloak.KeycloakClient
 import org.springframework.stereotype.Service
 
 @Service
 class AccountService (
-    private val keycloakService: KeycloakService
+    private val keycloakClient: KeycloakClient
 ) {
     /**
      * 회원 가입
@@ -18,6 +18,6 @@ class AccountService (
         if(signupRequest.password != signupRequest.passwordCheck) throw BadRequestErrorCodeException(AccountError.DIFFERENT_PASSWORD)
         // TODO 사용자 존재 여부 검증
         val account = Account(signupRequest.name, signupRequest.email, signupRequest.password).create()
-        keycloakService.registerBy(signupRequest)
+        keycloakClient.registerBy(signupRequest)
     }
 }
