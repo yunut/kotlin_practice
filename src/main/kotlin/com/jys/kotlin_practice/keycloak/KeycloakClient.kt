@@ -7,20 +7,16 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
 
 class KeycloakClient(
-    realm: String,
-    grantType: String,
-    authUrl: String,
-    clientId: String,
-    clientSecret: String
+    keycloakProperties: KeycloakProperties
 ) {
     private val realmResource: RealmResource =
         KeycloakBuilder.builder()
-            .realm(realm)
-            .grantType(grantType)
-            .serverUrl(authUrl)
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .build().realm(realm)
+            .realm(keycloakProperties.realm)
+            .grantType(keycloakProperties.grantType)
+            .serverUrl(keycloakProperties.authServerUrl)
+            .clientId(keycloakProperties.clientId)
+            .clientSecret(keycloakProperties.clientSecret)
+            .build().realm(keycloakProperties.realm)
 
     /**
      * keycloak 회원 생성
@@ -54,7 +50,7 @@ class KeycloakClient(
      * @param id 회원 번호
      */
     private fun addRestClientRole(id: String) {
-        val role = getRoleByName(KeyCloakRoles.REST_CLIENT)
+        val role = getRoleByName(KeycloakRoles.REST_CLIENT)
         realmResource.users().get(id).roles().realmLevel().add(listOf(role))
     }
 

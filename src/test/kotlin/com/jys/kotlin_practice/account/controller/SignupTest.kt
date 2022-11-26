@@ -1,18 +1,18 @@
 package com.jys.kotlin_practice.account.controller
 
+import com.jys.kotlin_practice.account.AccountService
 import com.jys.kotlin_practice.account.SignupRequest
 import com.jys.kotlin_practice.account.error.AccountError
+import com.jys.kotlin_practice.error.BadRequestErrorCodeException
 import com.jys.kotlin_practice.error.ErrorResponse
 import com.jys.kotlin_practice.fixture.signupRequest
-import com.jys.kotlin_practice.keycloak.KeycloakClient
+import com.ninjasquad.springmockk.MockkBean
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.*
-import org.keycloak.admin.client.resource.UserResource
-import org.keycloak.representations.account.UserRepresentation
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
@@ -21,12 +21,13 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @SpringBootTest
 @AutoConfigureWebTestClient
 class SignupTest(
-    private val webTestClient: WebTestClient
+    private val webTestClient: WebTestClient,
+    @MockkBean
+    private val accountService: AccountService
 ) : BehaviorSpec({
 
     beforeEach {
         clearAllMocks()
-
     }
 
     fun request(request: SignupRequest) = webTestClient.post()
@@ -60,6 +61,11 @@ class SignupTest(
                 password = "1"
                 passwordCheck = "2"
             }
+
+            coEvery {
+                accountService.signup(request)
+            } throws BadRequestErrorCodeException(AccountError.DIFFERENT_PASSWORD)
+
             val response = request(request).exchange()
 
             Then("status: 400 Bad Request") {
@@ -71,29 +77,38 @@ class SignupTest(
                     it.message shouldBe AccountError.DIFFERENT_PASSWORD.message
                 }
             }
-
         }
 
         When("계정이 이미 존재하는 경우") {
-            val keycloakClient: KeycloakClient = mockk()
-            val userResource: UserResource = mockk()
-            every { keycloakClient.getByEmail(any())} returns userResource
             val request = signupRequest()
+
+            coEvery {
+                accountService.signup(request)
+            } throws BadRequestErrorCodeException(AccountError.EMAIL_EXIST)
+
             val response = request(request).exchange()
 
-            Then("status: 409 Conflict") {
-                response.expectStatus().is4xxClientError
+            Then("status: 400 Bad Request") {
+                response.expectStatus().isBadRequest
+            }
+            Then("code: email_exist, message: 사용중인 이메일 입니다") {
+                response.expectBody(ErrorResponse::class.java).returnResult().responseBody!!.should {
+                    it.code shouldBe AccountError.EMAIL_EXIST.code
+                    it.message shouldBe AccountError.EMAIL_EXIST.message
+                }
             }
         }
     }
 
-
     Given("회원가입 API 가입 성공") {
         When("계정이 만들어졌을 경우") {
-            val keycloakClient: KeycloakClient = mockk()
-            every { keycloakClient.getByEmail(any()) } returns null
-            every { keycloakClient.registerBy(any()) } just Runs
-            val request = signupRequest()
+            val request = signupRequest {
+                password = "1"
+                passwordCheck = "2"
+            }
+            coEvery {
+                accountService.signup(request)
+            } returns Unit
             val response = request(request).exchange()
 
             Then("status: 201 Created") {

@@ -1,5 +1,5 @@
 package com.jys.kotlin_practice.keycloak
 
-object KeyCloakRoles {
+object KeycloakRoles {
     val REST_CLIENT = "rest-client"
 }
