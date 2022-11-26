@@ -1,28 +1,19 @@
 package com.jys.kotlin_practice.config
 
 import com.jys.kotlin_practice.keycloak.KeycloakClient
-import org.springframework.beans.factory.annotation.Value
+import com.jys.kotlin_practice.keycloak.KeycloakProperties
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 
 @Configuration
-class KeycloakConfiguration(
-    @Value("\${keycloak.realm}")
-    private val realm: String,
-    @Value("\${keycloak.grant_type}")
-    private val grantType: String,
-    @Value("\${keycloak.auth-server-url}")
-    private val authUrl: String,
-    @Value("\${keycloak.clientId}")
-    private val clientId: String,
-    @Value("\${keycloak.client_secret}")
-    private val clientSecret: String
-) {
+@EnableConfigurationProperties(value = [KeycloakProperties::class])
+class KeycloakConfiguration {
     /**
      * keycloak client
      */
     @Bean
-    fun keycloakClient(): KeycloakClient =
-        KeycloakClient(realm, grantType, authUrl, clientId, clientSecret)
+    fun keycloakClient(keycloakProperties: KeycloakProperties): KeycloakClient =
+        KeycloakClient(keycloakProperties)
 }
