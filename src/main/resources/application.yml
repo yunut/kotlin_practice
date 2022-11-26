@@ -5,3 +5,15 @@ server:
       enabled: false
     ## 오류 응답에 stacktrace 내용을 포함할지 여부
     include-stacktrace: never
+  port: 8090
+
+keycloak:
+  realm: development
+  grant_type: client_credentials
+  auth-server-url: http://localhost:8081
+  clientId: internal-services
+  client_secret: ASLelSDoDqTuPEODKUpantzkivy7xiRc
+
+logging:
+  level:
+    root: info
