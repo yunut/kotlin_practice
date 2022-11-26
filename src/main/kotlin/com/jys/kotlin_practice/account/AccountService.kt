@@ -3,9 +3,7 @@ package com.jys.kotlin_practice.account
 import com.jys.kotlin_practice.account.error.AccountError
 import com.jys.kotlin_practice.error.BadRequestErrorCodeException
 import com.jys.kotlin_practice.keycloak.KeycloakClient
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
-import org.springframework.web.server.ResponseStatusException
 
 @Service
 class AccountService (
@@ -20,7 +18,7 @@ class AccountService (
         if(signupRequest.password != signupRequest.passwordCheck) throw BadRequestErrorCodeException(AccountError.DIFFERENT_PASSWORD)
 
         // 사용자 존재 여부 검증
-        if(keycloakClient.getByEmail(signupRequest.email) == null) throw ResponseStatusException(HttpStatus.CONFLICT)
+        if(keycloakClient.getByEmail(signupRequest.email) == null) throw BadRequestErrorCodeException(AccountError.EMAIL_EXIST)
 
         keycloakClient.registerBy(signupRequest)
     }
