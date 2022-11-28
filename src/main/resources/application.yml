@@ -17,3 +17,9 @@ keycloak:
 logging:
   level:
     root: info
+
+spring:
+  thymeleaf:
+    template-loader-path: classpath:/templates
+    suffix: .html
+    cache: false
