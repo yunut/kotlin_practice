@@ -18,7 +18,7 @@ class AccountService (
         if(signupRequest.password != signupRequest.passwordCheck) throw BadRequestErrorCodeException(AccountError.DIFFERENT_PASSWORD)
 
         // 사용자 존재 여부 검증
-        if(keycloakClient.getByEmail(signupRequest.email) == null) throw BadRequestErrorCodeException(AccountError.EMAIL_EXIST)
+        if(keycloakClient.searchByEmail(signupRequest.email) == null) throw BadRequestErrorCodeException(AccountError.EMAIL_EXIST)
 
         keycloakClient.registerBy(signupRequest)
     }

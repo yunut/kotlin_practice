@@ -25,7 +25,7 @@ class KeycloakClient(
     fun registerBy(request: SignupRequest) {
         val response = realmResource.users().create(createUserBy(request))
         if (response.status != 201) throw ResponseStatusException(HttpStatus.valueOf(response.status))
-        addRestClientRole(searchByEmail(request.email).id)
+        addRestClientRole(getByEmail(request.email).id)
     }
 
     /**
@@ -34,15 +34,15 @@ class KeycloakClient(
      * @param email 이메일
      */
     fun searchByEmail(email: String) =
-        realmResource.users().search(email, true).firstOrNull() ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        realmResource.users().search(email, true)
 
     /**
-     * 이메일로 keycloack 유저 Get
+     * 이메일로 keycloak 유저 Get
      *
      * @param email 이메일
      */
     fun getByEmail(email: String) =
-        realmResource.users().get(email)
+        realmResource.users().get(email).toRepresentation() ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
     /**
      * rest-client 권한 부여
