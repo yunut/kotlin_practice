@@ -10,13 +10,13 @@ server:
 keycloak:
   realm: development
   grant_type: client_credentials
-  auth-server-url: http://localhost:8080
+  auth-server-url: http://localhost:8081
   clientId: internal-services
   client_secret: ASLelSDoDqTuPEODKUpantzkivy7xiRc
 
 logging:
   level:
-    root: debug
+    root: info
 
 spring:
   thymeleaf:
@@ -27,6 +27,6 @@ spring:
     oauth2:
       resourceserver:
         opaque-token:
-          introspection-uri: http://localhost:8080/realms/development/protocol/openid-connect/token/introspect
+          introspection-uri: http://localhost:8081/realms/development/protocol/openid-connect/token/introspect
           client-id: internal-services
           client-secret: ASLelSDoDqTuPEODKUpantzkivy7xiRc
