@@ -23,3 +23,10 @@ spring:
     template-loader-path: classpath:/templates
     suffix: .html
     cache: false
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://localhost:8081/realms/development/protocol/openid-connect/token/introspect
+          client-id: internal-services
+          client-secret: ASLelSDoDqTuPEODKUpantzkivy7xiRc
