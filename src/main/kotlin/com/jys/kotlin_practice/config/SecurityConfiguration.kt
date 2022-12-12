@@ -17,6 +17,7 @@ class SecurityConfiguration {
     @Bean
     fun webHttpSecurity(http: ServerHttpSecurity): SecurityWebFilterChain =
         http.csrf().disable().authorizeExchange {
+            it.pathMatchers("/templeates/**").permitAll()
             it.pathMatchers("/account/signin").permitAll()
             it.pathMatchers("/account/signup").permitAll()
             it.pathMatchers("/account/profile").authenticated()
