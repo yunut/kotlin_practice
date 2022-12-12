@@ -21,9 +21,9 @@ class AccountViewController {
     fun signup() = "/signup"
 
     /**
-     * 메인 페이지
+     * 프로필 페이지
      */
-    @GetMapping(value = ["/main"])
-    fun main() = "/main"
+    @GetMapping(value = ["/profile"])
+    fun profile() = "/profile"
 
 }
