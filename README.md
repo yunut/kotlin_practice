@@ -6,7 +6,7 @@
 기술 스택
 
 
-backend: kotlin, coroutine, mongodb
+backend: kotlin, coroutine, keycloak
 
 
 frontend: thymeleaf
