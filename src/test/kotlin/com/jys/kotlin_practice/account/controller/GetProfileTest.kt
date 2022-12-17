@@ -31,7 +31,7 @@ class GetProfileTest(
                 })
                 .get().uri(path).exchange()
 
-            Then("200 isOk") {
+            Then("200 Ok") {
                 exchange.expectStatus().isOk
             }
         }
