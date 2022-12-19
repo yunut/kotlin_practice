@@ -42,6 +42,7 @@ dependencies {
 
 
     testImplementation ("org.springframework.boot:spring-boot-starter-test")
+    testImplementation ("org.springframework.security:spring-security-test:5.8.0")
     testImplementation ("org.testcontainers:testcontainers:1.16.3")
     testImplementation ("org.testcontainers:junit-jupiter:1.17.2")
     testImplementation ("org.testcontainers:mongodb:1.17.2")
