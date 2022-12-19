@@ -24,7 +24,7 @@ class GetProfileTest(
     }
 
     Given("인증 요청 이후") {
-        When("인증이 올바르지 않은 경우") {
+        When("프로필 조회 성공한 경우") {
             val exchange = webTestClient
                 .mutateWith(mockOpaqueToken().attributes {
                     it["sub"] = customerId
